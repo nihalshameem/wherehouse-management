@@ -35,6 +35,7 @@
       </div>
       <div class="modal-body">
         <form action="{{url('receipt/add')}}" method="post" id="addForm">
+        @csrf
         <div class="container">
             <div class="form-group row">
                 <label for="wb_slip_no" class="col-sm-4">WB SLIP NO</label>
@@ -49,13 +50,21 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label for="location_id" class="col-sm-4">LOCATION</label>
+                <div class="col-sm-8">
+                    <select name="location_id" id="location_id" class="form-control" required>
+                        <option value="" selected disabled>--Select--</option>
+                        @foreach ($locations as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
                 <label for="wh_name" class="col-sm-4">WH NAME</label>
                 <div class="col-sm-8">
                     <select name="wh_name" id="wh_name" class="form-control" required>
                         <option value="" selected disabled>--Select--</option>
-                        @foreach ($wh_names as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                        @endforeach
                     </select>
                 </div>
             </div>
