@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Receipt;
 use App\Models\Variety;
-use App\Models\WHName;
+use App\Models\Location;
+use Session;
+use Illuminate\Http\Request;
 
 class ReceiptController extends Controller
 {
@@ -27,8 +29,24 @@ class ReceiptController extends Controller
     public function index()
     {
         $receipts = Receipt::all();
-        $wh_names = WHName::all();
+        $locations = Location::all();
         $varieties = Variety::all();
-        return view('receipt.index', ['receipts' => $receipts, 'wh_names' => $wh_names, 'varieties' => $varieties]);
+        return view('receipt.index', ['receipts' => $receipts, 'locations' => $locations, 'varieties' => $varieties]);
+    }
+
+    public function addPost(Request $request)
+    {
+        Receipt::create([
+            'wb_slip_no'=>$request->wb_slip_no,
+            'date'=>$request->date,
+            'wh_name'=>$request->wh_name,
+            'lot_number'=>$request->lot_number,
+        'variety'=>$request->variety,
+        'truck_no'=>$request->truck_no,
+        'bags'=>$request->bags,
+        'weight'=>$request->weight,
+        ]);
+        Session::flash('success','Receipt add successfully.');
+        return back();
     }
 }
