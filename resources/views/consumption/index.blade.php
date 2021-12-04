@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-<button type="button" class="btn btn-primary d-inline" data-toggle="modal" data-target="#addReceiptModal">Add Receipt</button>
+<button type="button" class="btn btn-primary d-inline" data-toggle="modal" data-target="#addReceiptModal">Add Consumption</button>
 
     <div class="container-fluid">
     <table class="table table-bordered data-table">
@@ -125,7 +125,7 @@
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ url('receipts') }}",
+        ajax: "{{ url('consumptions') }}",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'location_id', name: 'location_id'},
