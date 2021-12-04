@@ -89,8 +89,8 @@ class ReceiptController extends Controller
         $wh_names = WHName::all();
         $lot_numbers = WHSubName::all();
         $varieties = Variety::all();
-        return view('receipt.edit',['receipt'=>$receipt,'locations' => $locations, 'wh_names' => $wh_names,'loa_numbers'
-        => $loa_numbers, 'varieties' => $varieties]);
+        return view('receipt.edit',['receipt'=>$receipt,'locations' => $locations, 'wh_names' => $wh_names,'lot_numbers'
+        => $lot_numbers, 'varieties' => $varieties]);
     }
 
     public function update(Request $request,$id)

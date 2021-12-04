@@ -39,13 +39,13 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('receipts') }}">Receipts</a>
+                            <a class="nav-link" href="{{ url('receipt') }}">Receipts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('consumptions') }}">Consumptions</a>
+                            <a class="nav-link" href="{{ url('consumption') }}">Consumptions</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('shiftings') }}">Shiftings</a>
+                            <a class="nav-link" href="{{ url('shifting') }}">Shiftings</a>
                         </li>
                     </ul>
 
@@ -95,6 +95,9 @@
             @php
                 $lastseg = collect(request()->segments())->last();
             @endphp
+            
+                   <div class="container">
+                   
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -108,8 +111,6 @@
                     @endforeach
                 </ol>
             </nav>
-            
-                   <div class="container">
                     @if (session('success'))
                         <div class="alert alert-success" role="alert">
                             {{ session('success') }}
