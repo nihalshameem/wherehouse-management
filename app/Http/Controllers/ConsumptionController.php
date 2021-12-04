@@ -67,6 +67,7 @@ class ConsumptionController extends Controller
 
     public function addPost(Request $request)
     {
+        // return $request->location_id;
         Consumption::create([
             'wb_slip_no'=>$request->wb_slip_no,
             'date'=>$request->date,
@@ -89,8 +90,8 @@ class ConsumptionController extends Controller
         $wh_names = WHName::all();
         $lot_numbers = WHSubName::all();
         $varieties = Variety::all();
-        return view('consumption.edit',['consumption'=>$consumption,'locations' => $locations, 'wh_names' => $wh_names,'loa_numbers'
-        => $loa_numbers, 'varieties' => $varieties]);
+        return view('consumption.edit',['consumption'=>$consumption,'locations' => $locations, 'wh_names' => $wh_names,'lot_numbers'
+        => $lot_numbers, 'varieties' => $varieties]);
     }
 
     public function update(Request $request,$id)

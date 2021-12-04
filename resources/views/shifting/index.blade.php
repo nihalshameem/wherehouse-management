@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
 
-<button type="button" class="btn btn-primary d-inline" data-toggle="modal" data-target="#addReceiptModal">Add Shifting</button>
+<button type="button" class="btn btn-primary d-inline" data-toggle="modal" data-target="#addShiftingModal">Add Shifting</button>
 
     <div class="container-fluid">
     <table class="table table-bordered data-table">
@@ -25,17 +25,17 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="addReceiptModal" tabindex="-1" role="dialog" aria-labelledby="addReceiptModal" aria-hidden="true">
+<div class="modal fade" id="addShiftingModal" tabindex="-1" role="dialog" aria-labelledby="addShiftingModal" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addReceiptModalLabel">Add Receipt</h5>
+        <h5 class="modal-title" id="addShiftingModalLabel">Add Shifting</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        <form action="{{url('receipt/add')}}" method="post" id="addForm">
+        <form action="{{url('shifting/add')}}" method="post" id="addForm">
         @csrf
         <div class="container">
             <div class="form-group row">
@@ -125,7 +125,7 @@
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ url('shiftings') }}",
+        ajax: "{{ url('shifting') }}",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'location_id', name: 'location_id'},

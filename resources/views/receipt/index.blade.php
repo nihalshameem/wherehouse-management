@@ -125,7 +125,7 @@
     var table = $('.data-table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: "{{ url('receipts') }}",
+        ajax: "{{ url('receipt') }}",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
             {data: 'location_id', name: 'location_id'},
