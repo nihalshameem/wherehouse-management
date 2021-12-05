@@ -44,3 +44,10 @@ Route::post('/shifting/add', [App\Http\Controllers\ShiftingController::class, 'a
 Route::get('/shifting/edit/{id}', [App\Http\Controllers\ShiftingController::class, 'edit']);
 Route::post('/shifting/update/{id}', [App\Http\Controllers\ShiftingController::class, 'update']);
 Route::get('/shifting/delete/{id}', [App\Http\Controllers\ShiftingController::class, 'delete']);
+
+// purchase-order
+Route::get('/purchase-order', [App\Http\Controllers\PurchaseOrderController::class, 'index']);
+Route::post('/purchase-order/add', [App\Http\Controllers\PurchaseOrderController::class, 'addPost']);
+Route::get('/purchase-order/edit/{id}', [App\Http\Controllers\PurchaseOrderController::class, 'edit']);
+Route::post('/purchase-order/update/{id}', [App\Http\Controllers\PurchaseOrderController::class, 'update']);
+Route::get('/purchase-order/delete/{id}', [App\Http\Controllers\PurchaseOrderController::class, 'delete']);

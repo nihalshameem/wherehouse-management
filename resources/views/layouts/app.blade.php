@@ -47,6 +47,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('shifting') }}">Shiftings</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('purchase-order') }}">Purchase Order</a>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
