@@ -391,3 +391,9 @@ a[href*="#followme"]::before {
     z-index: 800;
     box-shadow: 1px 2px 5px rgba(0, 0, 0, 0.3);
 }
+
+.site-logo {
+    color: black;
+    font-weight: 700;
+    font-size: 16px;
+}

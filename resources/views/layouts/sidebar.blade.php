@@ -3,8 +3,10 @@
     <ul class="nav sidebar-nav">
         <div class="sidebar-header">
             <div class="sidebar-brand">
-                <a
-                    href="{{ url('/') }}">{{ config('app.name', 'Laravel') }}</a>
+                <a href="{{ url('/') }}">
+                    <span class="logo-letter">{{ auth()->user()->name }}[0]</span>
+                    <span>{{ auth()->user()->name }}</span>
+                </a>
             </div>
         </div>
         <li><a class="home" href="{{ url('/home') }}">Dashboard</a></li>
