@@ -97,7 +97,7 @@
             </button>
             <div class="top-nav">
                 <!-- <div class="d-inline">dd</div> -->
-                <a href="{{ url('/home') }}" class="site-logo">{{ config('app.name', 'Laravel') }}</a>
+                <!-- <a href="{{ url('/home') }}" class="site-logo">{{ config('app.name', 'Laravel') }}</a> -->
             </div>
             <div class="container-fluid main">
                 @php
