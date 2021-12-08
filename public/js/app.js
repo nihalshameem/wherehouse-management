@@ -33,6 +33,50 @@ $(document).ready(function () {
 });
 
 var base = window.location.origin;
+$("#po_id").on("change", function () {
+    let id = $("#po_id").val();
+    $("#poDetails table").empty();
+    $.ajax({
+        type: "GET",
+        url: base + "/get-po-details/" + id,
+        dataType: "json",
+        success: function (data) {
+            $("#weight").attr("max", data.balance_qty);
+            $("#poDetails table").append(
+                `
+            <thead>
+                <tr>
+                    <th>Order Number</th>
+                    <th>supplier</th>
+                    <th>Received Qty</th>
+                    <th>Balance Qty</th>
+                    <th>Total Qty</th>
+                </tr>
+            </thead>
+            <tbody class="text-success">
+                <tr>
+                    <td>` +
+                    data.order_number +
+                    `</td>
+                    <td>` +
+                    data.supplier +
+                    `</td>
+                    <td>` +
+                    data.received_qty +
+                    `</td>
+                    <td>` +
+                    data.balance_qty +
+                    `</td>
+                    <td>` +
+                    data.quantity +
+                    `</td>
+                </tr>
+            </tbody>
+            `
+            );
+        },
+    });
+});
 $("#wh_name").on("change", function () {
     let id = $("#wh_name").val();
     $("#lot_number option").remove();

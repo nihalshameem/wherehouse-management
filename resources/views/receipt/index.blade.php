@@ -3,7 +3,7 @@
 @section('content')
 <div class="">
 
-<button type="button" class="btn btn-primary d-inline" data-toggle="modal" data-target="#addReceiptModal">Add Receipt</button>
+<a href="{{ url('receipt/add') }}" type="button" class="btn btn-primary d-inline">Add Receipt</a>
 
     <div class="container-fluid">
     <table class="table table-bordered data-table">

@@ -57,6 +57,7 @@ class PurchaseOrderController extends Controller
             'supplier'=>$request->supplier,
             'variety'=>$request->variety,
             'quantity'=>$request->quantity,
+            'balance_qty'=>$request->quantity,
             'loading_from'=>$request->loading_from,
             'loading_to'=>$request->loading_to,
             'mode'=>$request->mode,
