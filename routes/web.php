@@ -24,9 +24,11 @@ Route::get('/test', [App\Http\Controllers\HomeController::class, 'test']);
 
 Route::get('/get-lot-numbers/{id}', [App\Http\Controllers\CommonController::class, 'lot_numbers']);
 Route::get('/get-wh-names/{id}', [App\Http\Controllers\CommonController::class, 'wh_names']);
+Route::get('/get-po-details/{id}', [App\Http\Controllers\CommonController::class, 'po_details']);
 
 // receipt
 Route::get('/receipt', [App\Http\Controllers\ReceiptController::class, 'index']);
+Route::get('/receipt/add', [App\Http\Controllers\ReceiptController::class, 'addForm']);
 Route::post('/receipt/add', [App\Http\Controllers\ReceiptController::class, 'addPost']);
 Route::get('/receipt/edit/{id}', [App\Http\Controllers\ReceiptController::class, 'edit']);
 Route::post('/receipt/update/{id}', [App\Http\Controllers\ReceiptController::class, 'update']);

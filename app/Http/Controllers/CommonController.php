@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\WHSubName;
 use App\Models\WHName;
+use App\Models\PurchaseOrder;
 
 class CommonController extends Controller
 {
@@ -16,5 +17,10 @@ class CommonController extends Controller
     {
         $wh_names = WHName::where('location_id', $id)->get();
         return json_encode($wh_names);
+    }
+    public function po_details($id)
+    {
+    $po_details = PurchaseOrder::find($id);
+    return json_encode($po_details);
     }
 }

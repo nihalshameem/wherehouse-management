@@ -7,6 +7,7 @@ use App\Models\WHName;
 use App\Models\Variety;
 use App\Models\Location;
 use App\Models\WHSubName;
+use App\Models\PurchaseOrder;
 use Session;
 use Illuminate\Http\Request;
 use DataTables;
@@ -65,19 +66,32 @@ class ReceiptController extends Controller
         return view('receipt.index', [ 'locations' => $locations, 'varieties' => $varieties]);
     }
 
+    public function addForm(Request $request)
+    {
+    $pos = PurchaseOrder::where('balance_qty','!=',0)->get();
+    $locations = Location::all();
+    $varieties = Variety::all();
+    return view('receipt.add', [ 'locations' => $locations, 'varieties' => $varieties,'pos'=>$pos]);
+    }
+
     public function addPost(Request $request)
     {
         Receipt::create([
             'wb_slip_no'=>$request->wb_slip_no,
+            'po_id'=>$request->po_id,
             'date'=>$request->date,
             'location_id'=>$request->location_id,
             'wh_name'=>$request->wh_name,
             'lot_number'=>$request->lot_number,
-        'variety'=>$request->variety,
-        'truck_no'=>$request->truck_no,
-        'bags'=>$request->bags,
-        'weight'=>$request->weight,
+            'variety'=>$request->variety,
+            'truck_no'=>$request->truck_no,
+            'bags'=>$request->bags,
+            'weight'=>$request->weight,
         ]);
+        $po = PurchaseOrder::find($request->po_id);
+        $po->received_qty = $po->received_qty + $request->weight;
+        $po->balance_qty = $po->balance_qty - $request->weight;
+        $po->save();
         Session::flash('success','Receipt add successfully.');
         return back();
     }
