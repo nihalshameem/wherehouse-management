@@ -103,14 +103,17 @@ class ReceiptController extends Controller
         $wh_names = WHName::all();
         $lot_numbers = WHSubName::all();
         $varieties = Variety::all();
+        $pos = PurchaseOrder::all();
+        $selected_po = PurchaseOrder::find($receipt->po_id);
         return view('receipt.edit',['receipt'=>$receipt,'locations' => $locations, 'wh_names' => $wh_names,'lot_numbers'
-        => $lot_numbers, 'varieties' => $varieties]);
+        => $lot_numbers, 'varieties' => $varieties,'pos'=>$pos,'selected_po'=>$selected_po]);
     }
 
     public function update(Request $request,$id)
     {
         $receipt = Receipt::find($id);
         $receipt->wb_slip_no=$request->wb_slip_no;
+        $receipt->po_id=$request->po_id;
         $receipt->date=$request->date;
         $receipt->location_id=$request->location_id;
         $receipt->wh_name=$request->wh_name;
@@ -120,6 +123,10 @@ class ReceiptController extends Controller
         $receipt->bags=$request->bags;
         $receipt->weight=$request->weight;
         $receipt->save();
+        $po = PurchaseOrder::find($request->po_id);
+        $po->received_qty = $po->received_qty + $request->weight;
+        $po->balance_qty = $po->balance_qty - $request->weight;
+        $po->save();
         Session::flash('success','Receipt updated successfully.');
         return back();
     }

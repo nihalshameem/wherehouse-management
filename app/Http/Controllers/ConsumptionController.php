@@ -7,6 +7,7 @@ use App\Models\WHName;
 use App\Models\Variety;
 use App\Models\Location;
 use App\Models\WHSubName;
+use App\Models\Receipt;
 use Session;
 use Illuminate\Http\Request;
 use DataTables;
@@ -61,7 +62,11 @@ class ConsumptionController extends Controller
         ->make(true);
         }
         $locations = Location::all();
-        $varieties = Variety::all();
+        $receipts = Receipt::all()->groupBy('po_id');
+        $varieties = [];
+        foreach ($receipts as $key => $item) {
+            $varieties[] = Variety::find($item[0]->po_id);
+        }
         return view('consumption.index', [ 'locations' => $locations, 'varieties' => $varieties]);
     }
 
