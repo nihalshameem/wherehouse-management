@@ -25,6 +25,7 @@ Route::get('/test', [App\Http\Controllers\HomeController::class, 'test']);
 Route::get('/get-lot-numbers/{id}', [App\Http\Controllers\CommonController::class, 'lot_numbers']);
 Route::get('/get-wh-names/{id}', [App\Http\Controllers\CommonController::class, 'wh_names']);
 Route::get('/get-po-details/{id}', [App\Http\Controllers\CommonController::class, 'po_details']);
+Route::get('/consumption-variety/{id}', [App\Http\Controllers\CommonController::class, 'consumption_variety']);
 
 // receipt
 Route::get('/receipt', [App\Http\Controllers\ReceiptController::class, 'index']);

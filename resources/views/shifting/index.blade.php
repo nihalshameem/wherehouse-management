@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="">
 
 <button type="button" class="btn btn-primary d-inline" data-toggle="modal" data-target="#addShiftingModal">Add Shifting</button>
 

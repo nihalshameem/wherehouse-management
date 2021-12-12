@@ -23,4 +23,10 @@ class CommonController extends Controller
     $po_details = PurchaseOrder::find($id);
     return json_encode($po_details);
     }
+    public function consumption_variety($id)
+    {
+    $po = PurchaseOrder::find($id);
+    $weight = $po->received_qty;
+    return json_encode($weight);
+    }
 }
