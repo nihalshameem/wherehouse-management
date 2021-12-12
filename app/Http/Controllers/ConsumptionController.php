@@ -7,6 +7,8 @@ use App\Models\WHName;
 use App\Models\Variety;
 use App\Models\Location;
 use App\Models\WHSubName;
+use App\Models\PurchaseOrder;
+use App\Models\Receipt;
 use Session;
 use Illuminate\Http\Request;
 use DataTables;
@@ -61,8 +63,15 @@ class ConsumptionController extends Controller
         ->make(true);
         }
         $locations = Location::all();
-        $varieties = Variety::all();
-        return view('consumption.index', [ 'locations' => $locations, 'varieties' => $varieties]);
+        $receipts = Receipt::all()->groupBy('variety');
+        $varieties = [];
+        $op_ids = [];
+        foreach ($receipts as $key => $item) {
+            $variety = Variety::find($item[0]->variety);
+            $op_ids[] = $item[0]->po_id;
+            $varieties[] = $variety;
+        }
+        return view('consumption.index', [ 'locations' => $locations, 'varieties' => $varieties,'op_ids'=>$op_ids]);
     }
 
     public function addPost(Request $request)

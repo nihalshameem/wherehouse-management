@@ -7,12 +7,6 @@
         <div class="container row single-page">
             <div class="col-md-6">
                 <div class="form-group row">
-                    <label for="wb_slip_no" class="col-sm-4">WB SLIP NO</label>
-                    <div class="col-sm-8">
-                        <input type="number" class="form-control" name="wb_slip_no" required>
-                    </div>
-                </div>
-                <div class="form-group row">
                     <label for="po_id" class="col-sm-4">PURCHASE ORDER</label>
                     <div class="col-sm-8">
                         <select name="po_id" id="po_id" class="form-control" required>
@@ -21,6 +15,12 @@
                                 <option value="{{ $item->id }}">{{ $item->order_number }}</option>
                             @endforeach
                         </select>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="wb_slip_no" class="col-sm-4">WB SLIP NO</label>
+                    <div class="col-sm-8">
+                        <input type="number" class="form-control" name="wb_slip_no" required>
                     </div>
                 </div>
                 <div class="form-group row">

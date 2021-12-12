@@ -116,3 +116,15 @@ $("#location_id").on("change", function () {
         },
     });
 });
+$("#con_variety").on("change", function () {
+    let id = $(this).find(":selected").data("opid");
+    $.ajax({
+        type: "GET",
+        url: base + "/consumption-variety/" + id,
+        dataType: "json",
+        success: function (data) {
+            $("#weight").val(data);
+            $("#weight").attr("max", data);
+        },
+    });
+});

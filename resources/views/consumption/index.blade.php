@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="">
 
 <button type="button" class="btn btn-primary d-inline" data-toggle="modal" data-target="#addConsumptionModal">Add Consumption</button>
 
@@ -80,10 +80,10 @@
             <div class="form-group row">
                 <label for="variety" class="col-sm-4">VARIETY</label>
                 <div class="col-sm-8">
-                    <select name="variety" id="variety" class="form-control" required>
+                    <select name="variety" id="con_variety" class="form-control" required>
                         <option value="" selected disabled>--Select--</option>
-                        @foreach ($varieties as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @foreach ($varieties as $k => $item)
+                            <option value="{{ $item->id }}" data-opid="{{ $op_ids[$k] }}">{{ $item->name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -103,7 +103,7 @@
             <div class="form-group row">
                 <label for="weight" class="col-sm-4">WEIGHT</label>
                 <div class="col-sm-8">
-                    <input type="number" name="weight" id="weight" class="form-control" required>
+                    <input type="number" name="weight" id="weight" min="0" class="form-control" required>
                 </div>
             </div>
         </div>
