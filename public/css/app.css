@@ -206,6 +206,12 @@ html {
 .shifting::before {
     content: "\f0d1" !important;
 }
+.opening::before {
+    content: "\f14c" !important;
+}
+.report::before {
+    content: "\f0a3" !important;
+}
 .purchase-order::before {
     content: "\f07a" !important;
 }

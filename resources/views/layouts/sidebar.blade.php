@@ -18,6 +18,8 @@
         <li><a class="receipt" href="{{ url('receipt') }}">Receipts</a></li>
         <li><a class="consumption" href="{{ url('consumption') }}">Consumptions</a></li>
         <li><a class="shifting" href="{{ url('shifting') }}">Shiftings</a></li>
+        <li><a class="opening" href="{{ url('opening') }}">Opening</a></li>
+        <li><a class="report" href="{{ url('report') }}">Report</a></li>
         @if (Auth::check())
   <li><a class="logout" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit()">Logout</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
