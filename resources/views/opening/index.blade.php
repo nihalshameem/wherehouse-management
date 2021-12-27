@@ -10,11 +10,10 @@
         <thead>
             <tr>
                 <th>No</th>
-                <th>Order Number</th>
+                <th>Wherehouse Name</th>
+                <th>Lot Number</th>
                 <th>Order Date</th>
                 <th>Qty</th>
-                <th>Expected Loading</th>
-                <th>Expected Arrival</th>
                 <th width="100px">Action</th>
             </tr>
         </thead>
@@ -39,27 +38,9 @@
         @csrf
         <div class="container">
             <div class="form-group row">
-                <label for="order_number" class="col-sm-4">ORDER NUMBER</label>
+                <label for="wh_id" class="col-sm-4">WH NAME</label>
                 <div class="col-sm-8">
-                    <input type="number" class="form-control" name="order_number" required>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="order_date" class="col-sm-4">ORDER DATE</label>
-                <div class="col-sm-8">
-                    <input type="date" class="form-control" name="order_date" required>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="supplier" class="col-sm-4">SUPPLIER</label>
-                <div class="col-sm-8">
-                    <input type="text" class="form-control" name="supplier" required>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="variety" class="col-sm-4">VARIETY</label>
-                <div class="col-sm-8">
-                    <select name="variety" id="variety" class="form-control" required>
+                    <select name="wh_id" id="wh_name" class="form-control" required>
                         <option value="" selected disabled>--Select--</option>
                         @foreach ($varieties as $item)
                             <option value="{{ $item->id }}">{{ $item->name }}</option>
@@ -68,54 +49,23 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label for="wh_sub_id" class="col-sm-4">LOT NUMBER</label>
+                <div class="col-sm-8">
+                    <select name="wh_sub_id" id="lot_number" class="form-control" required>
+                        <option value="">--Select--</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
                 <label for="wh_name" class="col-sm-4">QUANTITY</label>
                 <div class="col-sm-8">
-                    <input type="number" class="form-control" name="quantity" required>
+                    <input type="number" class="form-control" name="quantity" min="0" value="0" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="lot_number" class="col-sm-4">LOADING FROM</label>
+                <label for="date" class="col-sm-4">DATE</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="loading_from" required>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="loading_to" class="col-sm-4">LOADING TO</label>
-                <div class="col-sm-8">
-                    <select name="loading_to" id="loading_to" class="form-control" required>
-                        <option value="" selected disabled>--Select--</option>
-                        @foreach ($locations as $item)
-                            <option value="{{ $item->id }}">{{ $item->name }}</option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="mode" class="col-sm-4">MODE</label>
-                <div class="col-sm-8">
-                    <select name="mode" id="mode" class="form-control" required>
-                        <option value="Road">Road</option>
-                        <option value="Rail">Rail</option>
-                        <option value="Container">Container</option>
-                    </select>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="expected_loading" class="col-sm-4">EXPECTED LOADING</label>
-                <div class="col-sm-8">
-                    <input type="date" name="expected_loading" id="expected_loading" class="form-control" required>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="expected_arrival" class="col-sm-4">EXPECTED ARRIVAL</label>
-                <div class="col-sm-8">
-                    <input type="date" name="expected_arrival" id="expected_arrival" class="form-control" required>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="loading_last_date" class="col-sm-4">LAST DATE FOR LOADING</label>
-                <div class="col-sm-8">
-                    <input type="date" name="loading_last_date" id="loading_last_date" class="form-control" required>
+                    <input type="date" name="date" id="date" class="form-control" required>
                 </div>
             </div>
         </div>
@@ -140,11 +90,10 @@
         ajax: "{{ url('opening') }}",
         columns: [
             {data: 'DT_RowIndex', name: 'DT_RowIndex'},
-            {data: 'order_number', name: 'order_number'},
-            {data: 'order_date', name: 'order_date'},
+            {data: 'wh_name', name: 'wh_name'},
+            {data: 'lot_name', name: 'lot_name'},
+            {data: 'date', name: 'date'},
             {data: 'quantity', name: 'quantity'},
-            {data: 'expected_loading', name: 'expected_loading'},
-            {data: 'expected_arrival', name: 'expected_arrival'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });

@@ -55,6 +55,7 @@ Route::post('/purchase-order/add', [App\Http\Controllers\PurchaseOrderController
 Route::get('/purchase-order/edit/{id}', [App\Http\Controllers\PurchaseOrderController::class, 'edit']);
 Route::post('/purchase-order/update/{id}', [App\Http\Controllers\PurchaseOrderController::class, 'update']);
 Route::get('/purchase-order/delete/{id}', [App\Http\Controllers\PurchaseOrderController::class, 'delete']);
+
 // opening
 Route::get('/opening', [App\Http\Controllers\OpeningsController::class, 'index']);
 Route::post('/opening/add', [App\Http\Controllers\OpeningsController::class, 'addPost']);

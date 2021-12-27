@@ -2,99 +2,47 @@
 
 @section('content')
 <div class="container">
-    <form action="{{ url('purchase-order/update/'.$purchaseOrder->id) }}" method="post" id="addForm">
+    <form action="{{ url('opening/update/'.$opening->id) }}" method="post" id="addForm">
         @csrf
         <div class="container row single-page">
             <div class="col-md-6">
                 <div class="form-group row">
-                    <label for="order_number" class="col-sm-4">ORDER NUMBER</label>
+                    <label for="wh_id" class="col-sm-4">WH NAME</label>
                     <div class="col-sm-8">
-                        <input type="number" class="form-control" name="order_number" value="{{ $purchaseOrder->order_number }}"
-                            required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="supplier" class="col-sm-4">SUPPLIER</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" name="supplier" value="{{ $purchaseOrder->supplier }}"
-                            required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="quantity" class="col-sm-4">QUANTITY</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" name="quantity" value="{{ $purchaseOrder->quantity }}"
-                            required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="loading_to" class="col-sm-4">LOADING TO</label>
-                    <div class="col-sm-8">
-                        <select name="loading_to" id="loading_to" class="form-control" required>
-                            @foreach($locations as $item)
+                        <select name="wh_id" id="wh_name" class="form-control" required>
+                            @foreach($wh_names as $item)
                                 <option value="{{ $item->id }}"
-                                    {{ $purchaseOrder->loading_to == $item->id ? 'selected':'' }}>
+                                    {{ $opening->wh_id == $item->id ? 'selected':'' }}>
                                     {{ $item->name }}</option>
                             @endforeach
                         </select>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="expected_loading" class="col-sm-4">EXPECTED LOADING</label>
+                    <label for="wh_sub_id" class="col-sm-4">LOT NUMBER</label>
                     <div class="col-sm-8">
-                        <input type="date" class="form-control" name="expected_loading" value="{{ $purchaseOrder->expected_loading }}"
-                            required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="loading_last_date" class="col-sm-4">LAST DATE FOR LOADING</label>
-                    <div class="col-sm-8">
-                        <input type="date" name="loading_last_date" id="loading_last_date" class="form-control" value="{{ $purchaseOrder->loading_last_date }}"
-                            required>
+                        <select name="wh_sub_id" id="lot_number" class="form-control" required>
+                            @foreach($wh_names as $item)
+                                <option value="{{ $item->id }}"
+                                    {{ $opening->wh_sub_id == $item->id ? 'selected':'' }}>
+                                    {{ $item->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group row">
-                    <label for="order_date" class="col-sm-4">ORDER DATE</label>
+                    <label for="quantity" class="col-sm-4">QUANTITY</label>
                     <div class="col-sm-8">
-                        <input type="date" class="form-control" name="order_date" value="{{ $purchaseOrder->order_date }}" required>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="variety" class="col-sm-4">VARIETY</label>
-                    <div class="col-sm-8">
-                        <select name="variety" id="variety" class="form-control" required>
-                            @foreach($varieties as $item)
-                                <option value="{{ $item->id }}"
-                                    {{ $purchaseOrder->variety == $item->id ? 'selected':'' }}>
-                                    {{ $item->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="loading_from" class="col-sm-4">LOADING FROM</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" name="loading_from" value="{{ $purchaseOrder->loading_from }}"
+                        <input type="text" class="form-control" name="quantity" value="{{ $opening->quantity }}"
                             required>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="mode" class="col-sm-4">MODE</label>
+                    <label for="date" class="col-sm-4">DATE</label>
                     <div class="col-sm-8">
-                        <select name="mode" id="mode" class="form-control" required>
-                                <option value="Road" {{ $purchaseOrder->mode == 'Road' ? 'selected':'' }}>Road</option>
-                                <option value="Rail" {{ $purchaseOrder->mode == 'Rail' ? 'selected':'' }}>Rail</option>
-                                <option value="Container" {{ $purchaseOrder->mode == 'Container' ? 'selected':'' }}>Container</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="expected_arrival" class="col-sm-4">EXPECTED ARRIVAL</label>
-                    <div class="col-sm-8">
-                        <input type="date" class="form-control" name="expected_arrival" value="{{ $purchaseOrder->expected_arrival }}"
-                            required>
+                        <input type="date" class="form-control" name="date" value="{{ $opening->date }}" required>
                     </div>
                 </div>
                 <div class="form-group">
