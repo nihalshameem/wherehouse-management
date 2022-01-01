@@ -406,6 +406,14 @@ a[href*="#followme"]::before {
     color: black;
     font-weight: 700;
     font-size: 16px;
+    position: absolute;
+    top: 0;
+    left: 6%;
+    transform: translateY(50%);
+    width: 100px;
+}
+.site-logo img {
+    width: 100%;
 }
 .modal-backdrop {
     display: none !important;
@@ -421,4 +429,23 @@ a[href*="#followme"]::before {
     line-height: 1.8;
     font-weight: bold;
     margin: 0 5px;
+}
+.modal-content {
+    margin-top: 60px;
+}
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting:after,
+table.dataTable thead .sorting_asc:after,
+table.dataTable thead .sorting_desc:after,
+table.dataTable thead .sorting_asc_disabled:after,
+table.dataTable thead .sorting_desc_disabled:after,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting_asc:before,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_asc_disabled:before,
+table.dataTable thead .sorting_desc_disabled:before,
+table.dataTable thead .sorting:before,
+table.dataTable thead .sorting::after {
+    display: none;
 }
