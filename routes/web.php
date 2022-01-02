@@ -62,3 +62,10 @@ Route::post('/opening/add', [App\Http\Controllers\OpeningsController::class, 'ad
 Route::get('/opening/edit/{id}', [App\Http\Controllers\OpeningsController::class, 'edit']);
 Route::post('/opening/update/{id}', [App\Http\Controllers\OpeningsController::class, 'update']);
 Route::get('/opening/delete/{id}', [App\Http\Controllers\OpeningsController::class, 'delete']);
+
+// report
+Route::get('/report', [App\Http\Controllers\ReportsController::class, 'index']);
+Route::post('/report/add', [App\Http\Controllers\ReportsController::class, 'addPost']);
+Route::get('/report/edit/{id}', [App\Http\Controllers\ReportsController::class, 'edit']);
+Route::post('/report/update/{id}', [App\Http\Controllers\ReportsController::class, 'update']);
+Route::get('/report/delete/{id}', [App\Http\Controllers\ReportsController::class, 'delete']);

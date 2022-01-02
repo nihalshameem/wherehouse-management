@@ -97,7 +97,7 @@
             </button>
             <div class="top-nav">
                 <!-- <div class="d-inline">dd</div> -->
-                <!-- <a href="{{ url('/home') }}" class="site-logo">{{ config('app.name', 'Laravel') }}</a> -->
+                <a href="{{ url('/home') }}" class="site-logo"><img src="{{ asset('images/logo.png') }}"/></a>
             </div>
             <div class="container-fluid main">
                 @php
@@ -105,13 +105,13 @@
                 @endphp
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+                        <li class="breadcrumb-item"><a href="#" class="btn"><i class="fa fa-dashboard"></i> Dashboard</a></li>
                         <?php $segments = '';?>
                         @foreach(Request::segments() as $segment)
                             <?php $segments .= '/' . $segment;?>
                             <li
                                 class="breadcrumb-item {{ ($lastseg == $segment) ? 'active':'' }}">
-                                <a href="{{ $segments }}">{{ $segment }}</a>
+                                <a href="{{ $segments }}" class="btn {{ $loop->last == $segment ? 'disabled':'' }}">{{ $segment }}</a>
                             </li>
                         @endforeach
                     </ol>
